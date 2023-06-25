@@ -1,9 +1,14 @@
 novasecure_github
 =====
 
-An OTP library
+This is a library that is used from Novasecure to authtenticate using a github account.
 
-Build
------
-
-    $ rebar3 compile
+Config:
+----
+```
+#{
+  client_id => ClientId,
+  client_secret => ClientSecret,
+  redirect_uri => RedirectUri %% RedirectUri is optional
+ }
+```
