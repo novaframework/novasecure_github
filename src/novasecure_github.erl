@@ -10,7 +10,7 @@ callback(#{parsed_qs := #{<<"code">> := Code}}) ->
                    _ -> <<>>
                end,
     Params = <<"client_id=", ClientId/binary, "&client_secret=", ClientSecret/binary, "&code=", Code/binary, Redirect/binary>>,
-    #{status := {Code, _}, body := Body} = shttpc:post(<<"https://github.com/login/oauth/access_token?", Params/binary>>, <<>>,
+    #{status := {HttpCode, _}, body := Body} = shttpc:post(<<"https://github.com/login/oauth/access_token?", Params/binary>>, <<>>,
                                                        #{close => true,
                                                          headers => #{'Accept' => <<"application/json">>}}),
-    {status, Code, #{}, Body}.
+    {status, HttpCode, #{}, Body}.
